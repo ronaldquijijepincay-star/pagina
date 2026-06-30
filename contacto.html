@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Contacto</title>
+<style>
+    .contacto{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:120px 50px;
+
+    background:linear-gradient(
+        rgba(5,20,40,.80),
+        rgba(5,20,40,.80)
+    ),
+    url("https://images.unsplash.com/photo-1500835556837-99ac94a94552?w=1600");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.contacto-box{
+    width:100%;
+    max-width:1000px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:30px;
+    padding:50px;
+}
+
+.contacto-info{
+    color:white;
+}
+
+.contacto-info h1{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+.contacto-info p{
+    line-height:1.8;
+    color:#dcdcdc;
+    margin-bottom:20px;
+}
+
+.contacto-info div{
+    margin-top:20px;
+    line-height:2;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+form input,
+form textarea{
+    padding:18px;
+    border:none;
+    border-radius:15px;
+    background:rgba(255,255,255,.15);
+    color:white;
+    font-size:16px;
+}
+
+form input::placeholder,
+form textarea::placeholder{
+    color:#dcdcdc;
+}
+
+form button{
+    padding:18px;
+    border:none;
+    border-radius:30px;
+    background:#ffc107;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.4s;
+}
+
+form button:hover{
+    transform:scale(1.05);
+}
+header{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:90%;
+    max-width:1200px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 40px;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:60px;
+
+    z-index:1000;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+    color:white;
+}
+
+.menu{
+    display:flex;
+    gap:15px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:white;
+
+    padding:12px 25px;
+
+    border-radius:30px;
+
+    transition:.4s;
+    font-weight:600;
+}
+
+.menu a:hover{
+    background:rgba(255,255,255,.15);
+    transform:translateY(-3px);
+}
+
+.menu .activo{
+    background:#ffc107;
+    color:#000;
+    box-shadow:0 0 20px rgba(255,193,7,.6);
+}
+.menu a{
+    position:relative;
+}
+
+.menu a::after{
+    content:"";
+    position:absolute;
+
+    width:0;
+    height:3px;
+
+    left:50%;
+    bottom:5px;
+
+    background:#ffc107;
+
+    transition:.4s;
+    transform:translateX(-50%);
+}
+
+.menu a:hover::after{
+    width:60%;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Destinos Turísticos</div>
+    <nav class="menu">
+        <a href="pagina.html">Inicio</a>
+        <a href="viajes.html">Viajes</a>
+        <a href="contacto.html" class="activo">Contacto</a>
+    </nav>
+</header>
+
+<section class="contacto">
+    <div class="contacto-box">
+        <div class="contacto-info">
+            <h1>Contáctanos</h1>
+            <p>
+                Estamos listos para ayudarte a planificar el viaje de tus sueños.
+                Reserva tu próxima aventura y descubre los lugares más increíbles del Ecuador.
+            </p>
+            <div>
+                📍 Ecuador<br>
+                📞 +593 999 999 999<br>
+                ✉ chcasele1749696@estudiantes2.edu.ec<br>
+                🕒 Lunes a Viernes: 08:00 - 18:00
+            </div>
+        </div>
+
+        <!-- Formulario configurado con FormSubmit -->
+        <form action="https://formsubmit.co" method="POST">
+
+            <!-- Configuración para evitar el captcha visual de Google (Opcional) -->
+            <input type="hidden" name="_captcha" value="false">
+
+            <input type="text"
+                   name="Nombre"
+                   placeholder="Nombre completo"
+                   required>
+
+            <input type="email"
+                   name="Correo"
+                   placeholder="Correo electrónico"
+                   required>
+
+            <input type="tel"
+                   name="Telefono"
+                   placeholder="Teléfono">
+
+            <textarea rows="5"
+                      name="Mensaje"
+                      placeholder="¿Qué destino deseas visitar?"></textarea>
+
+            <button type="submit">
+                Enviar Reserva
+            </button>
+
+        </form>
+    </div>
+</section>
+
+</body>
+</html>

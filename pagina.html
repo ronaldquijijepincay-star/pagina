@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destinos Turísticos Ecuador</title>
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+
+<header>
+
+    <div class="logo">Destinos Turísticos</div>
+
+    <nav class="menu">
+
+        <a href="pagina.html" class="activo">Inicio</a>
+
+        <a href="viajes.html">Viajes</a>
+
+        <a href="contacto.html">Contacto</a>
+
+    </nav>
+</header>
+<section id="inicio" class="slider">
+    <!-- Formulario -->
+    <div class="contenido">
+    <span id="lugar">Manabí</span>
+
+    <h1 id="titulo">
+        Isla de la Plata
+    </h1>
+
+    <p id="descripcion">
+        Conocida por su biodiversidad, playas y paisajes marinos únicos.
+    </p>
+
+    <a id="botonDestino" href="#" target="_blank">
+        <button>Descubrir destino</button>
+    </a>
+</div>
+
+    <div class="controles">
+        <button onclick="anterior()">❮</button>
+        <button onclick="siguiente()">❯</button>
+    </div>
+
+    <div class="miniaturas">
+
+    <div class="card active" onclick="mostrar(0)">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0P64e-pAHiU7AOjoFUkPGpFSBwsRFlYYoD5v8nriDoA&s=500">
+        <h3>Isla de la Plata</h3>
+    </div>
+
+    <div class="card" onclick="mostrar(1)">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGD30jQpYmqRyLI-rok_ZBcr9fUHAT7qz3_8IRY9rgUlReO1ZTQt1vV6Wx&s=500">
+        <h3>Quilotoa</h3>
+    </div>
+
+    <div class="card" onclick="mostrar(2)">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8_StlcQbY1uCrNLPyRcJaDW0UbWgwQQTBTrXghIvvlg&s=500">
+        <h3>Santa Cruz</h3>
+    </div>
+
+  </div>
+</section>
+
+<script>
+    const destinos = [
+{
+    lugar: "Manabí",
+    nombre: "Isla de la Plata",
+    descripcion: "Conocida por su biodiversidad, playas y paisajes marinos únicos.",
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_6tueJGTX2uFkhkzj8I4oxRBVFw63lEGobdkL4EbAUg&s=1600",
+    enlace: "https://whalewatchingecuador.com/es/isladelaplata"
+},
+{
+    lugar: "Cotopaxi",
+    nombre: "Laguna de Quilotoa",
+    descripcion: "Una impresionante laguna volcánica de aguas turquesas rodeada de montañas.",
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToELJOc7aiSixQF5yDE_-WndKULASGKEc2QO4Z_FZJCN5R_scnfLPj7pcL&s=1600",
+    enlace: "https://www.quilotoa.com/"
+},
+{
+    lugar: "Galápagos",
+    nombre: "Isla Santa Cruz",
+    descripcion: "Famosa por sus paisajes naturales, playas y fauna extraordinaria.",
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ31-D3a5LQWRolt0gZf8oYKAc9f8rojJOS8f-mUh2zOw&s=1000",
+    enlace: "https://galapagossantacruz.com/"
+}
+];
+
+let actual = 0;
+
+function mostrar(i) {
+    actual = i;
+
+    const slider = document.querySelector(".slider");
+
+slider.style.backgroundImage =
+`linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
+url(${destinos[i].imagen})`;
+
+    document.getElementById("lugar").textContent =
+        destinos[i].lugar;
+
+    document.getElementById("titulo").textContent =
+        destinos[i].nombre;
+
+    document.getElementById("descripcion").textContent =
+        destinos[i].descripcion;
+
+    document.getElementById("botonDestino").href =
+        destinos[i].enlace;
+
+    document.querySelectorAll(".card")
+        .forEach(card => card.classList.remove("active"));
+
+    document.querySelectorAll(".card")[i]
+        .classList.add("active");
+}
+
+function siguiente() {
+    actual = (actual + 1) % destinos.length;
+    mostrar(actual);
+}
+
+function anterior() {
+    actual = (actual - 1 + destinos.length) % destinos.length;
+    mostrar(actual);
+}
+
+mostrar(0);
+setInterval(siguiente, 10000);
+
+</script>
+</body>
+</html>
